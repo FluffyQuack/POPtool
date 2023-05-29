@@ -748,7 +748,7 @@ static const char *PredefinedPOP2ScriptAnimName(int id)
 	case 11: return "HangDrop";
 	case 12: return "Falling";
 	case 13: return "RunStop";
-	case 14: return "JumpUp";
+	case 14: return "JumpUpAndHitCeiling";
 	case 15: return "FallHang";
 	case 16: return "JumpHangSomething1";
 	case 17: return "MaybeStoop";
@@ -761,7 +761,7 @@ static const char *PredefinedPOP2ScriptAnimName(int id)
 	case 24: return "JumpHangSomething2";
 	case 25: return "HangStraight";
 	case 26: return "SoftLand";
-	case 27: return "MaybeQuickSandDeath";
+	case 27: return "QuickSandDeath";
 	case 28: return "HighJump";
 	case 29: return "Step1";
 	case 30: return "Step2";
@@ -793,7 +793,7 @@ static const char *PredefinedPOP2ScriptAnimName(int id)
 	case 56: return "Advance";
 	case 57: return "FastAdvanceMaybe";
 	case 58: return "FightSomething";
-	case 59: return "ClimbUp"; //TODO: This contains an "EndLevel". Could it be finishing level 1? Or maybe another level where you finish by climbing something?
+	case 59: return "ClimbUpAndEndLevel"; //TODO: Could it be finishing level 1? Or maybe another level where you finish by climbing something?
 	case 60: return "FightIdle";
 	case 61: return "StrikeToBlock";
 	case 62: return "ReadyBlockMaybe";
@@ -822,8 +822,8 @@ static const char *PredefinedPOP2ScriptAnimName(int id)
 	case 85: return "Weird";
 	case 86: return "SimilarToAdvance";
 	case 87: return "SimilarToStrike";
-	case 88: return "Gibberish";
-	case 89: return "PartTurnMaybe"; //TODO: I think this is turn-into-engarde
+	case 88: return "SkeletonRisingFromDead";
+	case 89: return "TurnIntoEngardeMaybe";
 	case 90: return "Nothing5";
 	case 91: return "PickupSword";
 	case 92: return "Resheathe";
@@ -832,6 +832,7 @@ static const char *PredefinedPOP2ScriptAnimName(int id)
 	case 96: return "StrikeLowMaybe";
 	case 97: return "DropDead";
 	case 98: return "ProneDeathMaybe";
+	case 112: return "SkeletonRelated";
 	case 113: return "SliceDeath";
 	case 118: return "Crushed";
 	case 121: return "CrawlIdle";
@@ -839,17 +840,24 @@ static const char *PredefinedPOP2ScriptAnimName(int id)
 	case 123: return "CrawlBackward";
 	case 124: return "CrawlToStand";
 	case 125: return "StandToCrawl";
+	case 126: return "SkeletonRelated";
 	case 127: return "TurnWhileFighting";
 	case 128: return "MagicCarpetMaybe";
+	case 150: return "HeadAttack1";
+	case 151: return "HeadAttack2";
+	case 154: return "HeadDying";
+	case 185: return "GuardFallingOffSideAndScreaming";
 	case 196: return "Disappear";
 	case 197: return "Laugh";
-	case 200: return "RunMaybe";
-	case 201: return "RunLoop";
+	case 200: return "Run";
+	case 201: return "RunLoop1";
+	case 202: return "RunLoop2";
 	case 210: return "Hang";
 	case 211: return "MissingStepMaybe";
 	case 212: return "MediumLand";
 	case 213: return "DropDeadAgainWaduhek";
-	//TODO: I think 227 is fight idle
+	case 226: return "HeadAttack3";
+	case 227: return "FightIdleMaybe";
 	case 231: return "RiseFromDead";
 	case 235: return "FinishClimb";
 	case 236: return "AlsoClimbMaybe";
