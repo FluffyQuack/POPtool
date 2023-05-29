@@ -56,7 +56,6 @@ int _tmain(int argc, _TCHAR *argv[])
 {
 	//Defaults
 	int mode = MODE_NOTHING;
-	bool createdNewHashList = 0;
 
 	//Process command line arguments
 	int i = 1, strcount = 0;
