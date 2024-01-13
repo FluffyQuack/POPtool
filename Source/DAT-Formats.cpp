@@ -1017,9 +1017,9 @@ bool Prince_ExtractDATv2(const char *path, unsigned char *palData, unsigned int 
 						unsigned int pos = 0;
 						const char *scriptName = PredefinedPOP2ScriptAnimName(id);
 						if(scriptName)
-							fprintf(sequenceOutput, "[%03i_%s]", id, scriptName);
+							fprintf(sequenceOutput, "[POP2_%03i_%s]", id, scriptName);
 						else
-							fprintf(sequenceOutput, "[%03i]", id);
+							fprintf(sequenceOutput, "[POP2_%03i]", id);
 						while(pos + 1 < fileDataSize)
 						{
 							fprintf(sequenceOutput, "\r\n");
@@ -1127,9 +1127,9 @@ bool Prince_ExtractDATv2(const char *path, unsigned char *palData, unsigned int 
 									short animId = (short &) (fileData[pos]); pos += 2;
 									const char *scriptName = PredefinedPOP2ScriptAnimName(animId);
 									if(scriptName)
-										fprintf(sequenceOutput, "Anim_IfFeather %03i_%s", animId, scriptName);
+										fprintf(sequenceOutput, "Anim_IfFeather POP2_%03i_%s", animId, scriptName);
 									else
-										fprintf(sequenceOutput, "Anim_IfFeather %03i", animId);
+										fprintf(sequenceOutput, "Anim_IfFeather POP2_%03i", animId);
 									break;
 								}
 								case -9: //seq_fff7
@@ -1184,9 +1184,9 @@ bool Prince_ExtractDATv2(const char *path, unsigned char *palData, unsigned int 
 									short animId = (short &) (fileData[pos]); pos += 2;
 									const char *scriptName = PredefinedPOP2ScriptAnimName(animId);
 									if(scriptName)
-										fprintf(sequenceOutput, "Anim %03i_%s", animId, scriptName);
+										fprintf(sequenceOutput, "Anim POP2_%03i_%s", animId, scriptName);
 									else
-										fprintf(sequenceOutput, "Anim %03i", animId);
+										fprintf(sequenceOutput, "Anim POP2_%03i", animId);
 									break;
 								}
 								default: //Animation frame
