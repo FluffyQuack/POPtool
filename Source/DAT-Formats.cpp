@@ -1065,7 +1065,9 @@ bool Prince_ExtractDATv2(const char *path, unsigned char *palData, unsigned int 
 								case -22: //seq_ffea_random_branch
 								{
 									short val = (short &) (fileData[pos]); pos += 2;
-									fprintf(sequenceOutput, "RandomBranch %i", val);
+									short val2 = (short &) (fileData[pos]); pos += 2;
+									short val3 = (short &) (fileData[pos]); pos += 2;
+									fprintf(sequenceOutput, "RandomBranch %i %i %i", val, val2, val3);
 									break;
 								}
 								case -21: //seq_ffeb
