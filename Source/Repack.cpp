@@ -167,13 +167,41 @@ bool Prince_RepackDATv2(char *path)
 			if(_stricmp(r_str, "Action") == 0) //This is followed by an argument specifying what type of 
 			{
 				(PRINCE_AP_OPSIZE &) byteCodeBuffer[byteCodeBufferPos] = -7; byteCodeBufferPos += sizeof(PRINCE_AP_OPSIZE);
-				if(!ReadValue(line, 2, RV_INT))
+				bool valid = 0;
+				short value = 0;
+				if(ReadValue(line, 2, RV_STRING)) //Check for string
+				{
+					valid = 1;
+					if(_stricmp(r_str, "Stand") == 0) value = 0;
+					else if(_stricmp(r_str, "RunJump") == 0) value = 1;
+					else if(_stricmp(r_str, "HangClimb") == 0) value = 2;
+					else if(_stricmp(r_str, "InMidair") == 0) value = 3;
+					else if(_stricmp(r_str, "InFreefall") == 0) value = 4;
+					else if(_stricmp(r_str, "Bumped") == 0) value = 5;
+					else if(_stricmp(r_str, "HangStraight") == 0) value = 6;
+					else if(_stricmp(r_str, "Turn") == 0) value = 7;
+					else if(_stricmp(r_str, "Jinnee") == 0) value = 8;
+					else if(_stricmp(r_str, "FallingIntoForeground") == 0) value = 9;
+					else if(_stricmp(r_str, "Hurt") == 0) value = 99;
+					else valid = 0;
+				}
+				
+				if(valid == 0 && ReadValue(line, 2, RV_INT)) //Check for number
+				{
+					value = (short) r_int;
+					valid = 1;
+				}
+
+				if(valid)
+				{
+					(short &) byteCodeBuffer[byteCodeBufferPos] = value; byteCodeBufferPos += sizeof(short);
+				}
+				else
 				{
 					StatusUpdate("Warning: Invalid second argument %s for Action script command", r_str);
 					delete[]byteCodeBuffer;
 					goto fail;
 				}
-				(short &) byteCodeBuffer[byteCodeBufferPos] = (short) r_int; byteCodeBufferPos += sizeof(short);
 			}
 			else if(_stricmp(r_str, "Anim") == 0 || _stricmp(r_str, "Anim_IfFeather") == 0) //This is followed by an argument specifying script function (optionally, it can have a second component which specifies where in a script function to jump to)
 			{
