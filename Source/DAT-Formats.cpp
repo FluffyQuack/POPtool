@@ -1151,7 +1151,18 @@ bool Prince_ExtractDATv2(const char *path, unsigned char *palData, unsigned int 
 								case -7: //seq_fff9_action
 								{
 									short action = (short &) (fileData[pos]); pos += 2;
-									fprintf(sequenceOutput, "Action %i", action);
+									if(action == 0) fprintf(sequenceOutput, "Action Stand");
+									else if(action == 1) fprintf(sequenceOutput, "Action RunJump");
+									else if(action == 2) fprintf(sequenceOutput, "Action HangClimb");
+									else if(action == 3) fprintf(sequenceOutput, "Action InMidair");
+									else if(action == 4) fprintf(sequenceOutput, "Action InFreefall");
+									else if(action == 5) fprintf(sequenceOutput, "Action Bumped");
+									else if(action == 6) fprintf(sequenceOutput, "Action HangStraight");
+									else if(action == 7) fprintf(sequenceOutput, "Action Turn");
+									else if(action == 8) fprintf(sequenceOutput, "Action Jinnee");
+									else if(action == 9) fprintf(sequenceOutput, "Action FallingIntoForeground");
+									else if(action == 99) fprintf(sequenceOutput, "Action Hurt");
+									else fprintf(sequenceOutput, "Action %i", action);
 									break;
 								}
 								case -6: //seq_fffa_dy
