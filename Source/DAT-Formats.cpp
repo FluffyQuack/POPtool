@@ -1099,7 +1099,7 @@ bool Prince_ExtractDATv2(const char *path, unsigned char *palData, unsigned int 
 								case -15: //seq_fff1_sound
 								{
 									short snd = (short &) (fileData[pos]); pos += 2;
-									fprintf(sequenceOutput, "PlaySound %i", snd);
+									fprintf(sequenceOutput, "PlaySoundPOP2 %i", snd);
 									break;
 								}
 								case -14: //seq_fff2_getitem
