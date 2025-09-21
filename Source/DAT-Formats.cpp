@@ -1174,7 +1174,20 @@ bool Prince_ExtractDATv2(const char *path, unsigned char *palData, unsigned int 
 									short val = (short &) (fileData[pos]); pos += 2;
 									short val2 = (short &) (fileData[pos]); pos += 2;
 									short val3 = (short &) (fileData[pos]); pos += 2;
-									fprintf(sequenceOutput, "RandomBranch %i %i %i", val, val2, val3);
+
+									//Write first part of command
+									fprintf(sequenceOutput, "RandomBranch %i", val);
+
+									//Write two script names
+									for(int i = 0; i < 2; i++)
+									{
+										int branchingId = i == 0 ? val2 : val3;
+										const char *scriptName = PredefinedPOP2ScriptAnimName(branchingId);
+										if(scriptName)
+											fprintf(sequenceOutput, " POP2_%03i_%s", branchingId, scriptName);
+										else
+											fprintf(sequenceOutput, " POP2_%03i", branchingId);
+									}
 									break;
 								}
 								case -21: //seq_ffeb
