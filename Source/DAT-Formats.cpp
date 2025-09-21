@@ -1166,7 +1166,7 @@ bool Prince_ExtractDATv2(const char *path, unsigned char *palData, unsigned int 
 								}
 								case -23: //seq_ffe9
 								{
-									fprintf(sequenceOutput, "UnknownOp%i", abs(op));
+									fprintf(sequenceOutput, "RepeatLastFrame");
 									break;
 								}
 								case -22: //seq_ffea_random_branch
@@ -1193,7 +1193,7 @@ bool Prince_ExtractDATv2(const char *path, unsigned char *palData, unsigned int 
 								case -21: //seq_ffeb
 								{
 									short val = (short &) (fileData[pos]); pos += 2;
-									fprintf(sequenceOutput, "UnknownOp%i %i", abs(op), val);
+									fprintf(sequenceOutput, "SetSpecialState %i", val);
 									break;
 								}
 								case -19: //seq_ffed_align_to_floor
@@ -1203,7 +1203,7 @@ bool Prince_ExtractDATv2(const char *path, unsigned char *palData, unsigned int 
 								}
 								case -18: //seq_ffee
 								{
-									fprintf(sequenceOutput, "UnknownOp%i", abs(op));
+									fprintf(sequenceOutput, "ResetSetAnim");
 									break;
 								}
 								case -17: //seq_ffef_disappear
@@ -1241,7 +1241,7 @@ bool Prince_ExtractDATv2(const char *path, unsigned char *palData, unsigned int 
 								case -11: //seq_fff5
 								{
 									short val = (short &) (fileData[pos]); pos += 2;
-									fprintf(sequenceOutput, "UnknownOp%i %i", abs(op), val);
+									fprintf(sequenceOutput, "SetDeathType %i", val);
 									break;
 								}
 								case -10: //seq_fff6_jump_if_slow
@@ -1258,7 +1258,7 @@ bool Prince_ExtractDATv2(const char *path, unsigned char *palData, unsigned int 
 								{
 									short val = (short &) (fileData[pos]); pos += 2;
 									short val2 = (short &) (fileData[pos]); pos += 2;
-									fprintf(sequenceOutput, "UnknownOp%i %i %i", abs(op), val, val2);
+									fprintf(sequenceOutput, "AddMomentum %i %i", val, val2);
 									break;
 								}
 								case -8: //seq_fff8_setfall
